@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <p>Your IP address: <strong>{{ user_ip }}</strong></p>
+
+        <h1>Login</h1>
+        <form method="POST" action="/login">
+            <label for="password">Enter Password:</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember Me</label>
+            </div>
+
+            <br>
+            <input type="submit" value="Login">
+        </form>
+
+        <br>
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>

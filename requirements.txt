@@ -1,2 +1,9 @@
-Flask==2.1.1
-Werkzeug==2.1.1
+Flask==2.1.3           # Web framework
+Werkzeug==2.1.3        # WSGI toolkit (used internally by Flask)
+qrcode==7.3.1          # QR code generation
+Pillow==9.2.0          # Image processing (for QR codes)
+sqlite3==2.6.0         # Database (comes with Python but useful if required)
+gunicorn==20.1.0       # Production server
+itsdangerous==2.1.2    # Used for secure session handling in Flask
+Jinja2==3.1.2          # Template engine used by Flask
+click==8.1.3           # Command line interface (used internally by Flask)

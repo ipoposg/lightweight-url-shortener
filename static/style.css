@@ -7,23 +7,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Ensure it takes full viewport height */
+    min-height: 100vh; /* Full viewport height */
     color: #333;
 }
 
-/* Main container */
+/* Main Container Styling */
 .container {
     background-color: white;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px; /* Ensures max width on larger screens */
+    max-width: 600px; /* Ensure max width on larger screens */
     text-align: center;
-    margin: 20px; /* Add margin for smaller screens */
+    margin: 20px auto; /* Center with margin for small screens */
 }
 
-/* Input fields */
+/* Input Fields Styling */
 input[type="url"],
 input[type="text"],
 input[type="password"] {
@@ -36,30 +36,25 @@ input[type="password"] {
     font-size: 16px;
 }
 
-/* Buttons */
+/* Submit Button Styling */
 input[type="submit"] {
     background-color: #4CAF50;
     color: white;
     padding: 12px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     width: 100%;
     font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
 }
 
 input[type="submit"]:hover {
     background-color: #45a049;
 }
 
-/* Heading */
-h1 {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-/* Flash messages */
+/* Flash Messages */
 ul {
     list-style-type: none;
     padding: 0;
@@ -70,17 +65,98 @@ ul li {
     margin: 10px 0;
 }
 
-/* Make anchor links styled for mobile */
+/* Headings */
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h1 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Link Styling */
 a {
     color: #4CAF50;
     text-decoration: none;
+    margin-top: 20px;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-/* Media query for smaller screens (mobile) */
+/* File Upload Wrapper */
+.file-upload-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Space between button and file name */
+    margin-bottom: 20px;
+}
+
+/* Custom File Upload Button */
+.custom-file-upload {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+/* Hide Native File Input */
+input[type="file"] {
+    display: none;
+}
+
+/* File Name Display */
+#file-chosen {
+    font-size: 14px;
+    color: #333;
+    font-style: italic;
+}
+
+/* File Upload Button Hover */
+.custom-file-upload:hover {
+    background-color: #45a049;
+}
+
+/* Styling for the 404 Page */
+.page-404 h1 {
+    font-size: 36px;
+    color: #ff4f4f;
+    margin-bottom: 10px;
+}
+
+.page-404 p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.page-404 a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.page-404 a:hover {
+    text-decoration: underline;
+}
+
+/* Checkbox Container */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+/* Media Query for Smaller Screens (Mobile) */
 @media (max-width: 600px) {
     .container {
         padding: 20px;
