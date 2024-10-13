@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function validateAndSubmit() {
+            const urlInput = document.getElementById('original_url');
+            const passwordInput = document.getElementById('password');
+            let url = urlInput.value.trim();
+
+            // Autofill https:// if scheme is missing
+            if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                url = 'https://' + url;
+                urlInput.value = url; // Update the input value
+            }
+
+            // Check if URL is valid
+            if (!isValidURL(url)) {
+                alert('Please enter a valid URL.');
+                return false; // Prevent form submission
+            }
+
+            // Ensure password is entered
+            if (passwordInput.value.trim() === '') {
+                alert('Please enter a password.');
+                return false; // Prevent form submission
+            }
+
+            // If everything is valid, allow form submission
+            return true;
+        }
+
+        function isValidURL(url) {
+            const pattern = new RegExp(
+                '^(https?:\\/\\/)?' + // Optional protocol
+                '((([a-zA-Z0-9_\\-]+)\\.)+[a-zA-Z]{2,})' + // Domain name
+                '(\\:\\d+)?(\\/.*)?$', 'i' // Optional port and path
+            );
+            return !!pattern.test(url);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>URL Shortener</h1>
+        <form method="POST" action="/" onsubmit="return validateAndSubmit()">
+            <label for="original_url">Enter the original URL:</label>
+            <input type="text" id="original_url" name="original_url" required>
+
+            <label for="custom_alias">Custom Alias (optional):</label>
+            <input type="text" name="custom_alias" placeholder="Optional alias">
+
+            <label for="password">Enter the password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <input type="submit" value="Create Short URL">
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

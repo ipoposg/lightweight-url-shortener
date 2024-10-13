@@ -1,0 +1,105 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    color: #333;
+}
+
+/* Main container */
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Ensures max width on larger screens */
+    text-align: center;
+    margin: 20px; /* Add margin for smaller screens */
+}
+
+/* Input fields */
+input[type="url"],
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Buttons */
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Heading */
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Flash messages */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    color: red;
+    margin: 10px 0;
+}
+
+/* Make anchor links styled for mobile */
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Media query for smaller screens (mobile) */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    input[type="submit"] {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    input[type="url"],
+    input[type="text"],
+    input[type="password"] {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
