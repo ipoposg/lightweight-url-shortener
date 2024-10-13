@@ -33,7 +33,7 @@ def index():
             flash('Please enter a valid URL.')
             return redirect(url_for('index'))
 
-        # Check if the URL is recursive (s.keechun.me)
+        # Check if the URL is recursive
         if is_recursive(original_url):
             flash('You cannot shorten URLs from this domain.')
             return redirect(url_for('index'))
@@ -76,9 +76,9 @@ def generate_short_url():
     return ''.join(choice(string.ascii_letters + string.digits) for _ in range(6))
 
 def is_recursive(url):
-    """Check if the URL belongs to s.keechun.me to prevent recursion."""
+    """Check URL to prevent recursion."""
     parsed_url = urlparse(url)
-    return parsed_url.netloc == 's.keechun.me'
+    return parsed_url.netloc == 'example.com' # Replace with the domain this application is running on.
 
 def ensure_scheme(url):
     """Ensure the URL has http:// or https://. If missing, add https:// by default."""
