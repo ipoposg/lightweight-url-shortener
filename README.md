@@ -8,6 +8,6 @@ QR Code functionality built-in.
 
 https://s.keechun.me
 
-Default login password: qwerty
+Default login password: qwerty (for self-hosted instances)
 
-Please run convert.py to convert your password into SHA256 format, to be inserted into app.py.
+Please run convert.py to convert your password into SHA256 format to be inserted into app.py.
