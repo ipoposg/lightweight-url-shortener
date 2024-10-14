@@ -88,6 +88,11 @@ a:hover {
     text-decoration: underline;
 }
 
+.button, .source-code-btn {
+    color: white !important; /* Ensure text stays white */
+    text-decoration: none !important; /* Remove underline on buttons */
+}
+
 /* File Upload Wrapper */
 .file-upload-wrapper {
     display: flex;
@@ -126,6 +131,54 @@ input[type="file"] {
     background-color: #45a049;
 }
 
+/* General Button Styling */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #4CAF50;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+/* Smaller Button Styling */
+.button-small {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+/* Specific Styling for Source Code Button */
+.source-code-btn {
+    background-color: #008CBA;  /* Blue color */
+    color: white;               /* Ensure the text stays white */
+}
+
+.source-code-btn:hover {
+    background-color: #007bb5;
+    transform: scale(1.05);
+}
+
+.source-code-btn:hover {
+    text-decoration: none !important;
+}
+
+/* Hover Effect for Regular Buttons */
+.button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Optional: Adjust Button Spacing */
+.button + .button {
+    margin-left: 10px;
+}
+
 /* Styling for the 404 Page */
 .page-404 h1 {
     font-size: 36px;
@@ -141,6 +194,17 @@ input[type="file"] {
 .page-404 a {
     color: #4CAF50;
     text-decoration: none;
+}
+
+.page-404 .source-code-btn {
+    background-color: #008CBA;
+    color: white;
+    text-decoration: none;
+}
+
+.page-404 .source-code-btn:hover {
+    background-color: #007bb5;
+    transform: scale(1.05);
 }
 
 .page-404 a:hover {

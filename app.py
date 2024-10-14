@@ -18,7 +18,7 @@ app.permanent_session_lifetime = timedelta(days=7)
 
 DATABASE = 'urls.db'
 UPLOAD_FOLDER = 'uploads'
-PASSWORD_HASH = '' # Enter your SHA256 password here
+PASSWORD_HASH = 'pbkdf2:sha256:600000$NfuZbGFSvFDngsW0$9e9191654131b51e5ca19eb839b49c024c092958dc13129f9cd9495209931c36'
 BLACKLIST_EXTENSIONS = {'exe', 'bat', 'sh', 'msi', 'com', 'js', 'jar', 'py'}
 
 # Ensure the upload folder exists
@@ -241,6 +241,10 @@ def is_valid_url(url):
 def check_password(input_password):
     return check_password_hash(PASSWORD_HASH, input_password)
 
+@app.route('/robots.txt')
+def robots_txt():
+    return send_from_directory(app.root_path, 'robots.txt')
+
 @app.errorhandler(404)
 def page_not_found(e):
     """Custom 404 page."""
@@ -248,4 +252,4 @@ def page_not_found(e):
     return render_template('404.html', user_ip=user_ip), 404
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8084, debug=True)
+    app.run(host='0.0.0.0', port=8084)
