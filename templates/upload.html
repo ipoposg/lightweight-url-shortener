@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload File</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Styling for the drag-and-drop area */
+        .file-drop-area {
+            border: 2px dashed #007BFF;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .file-drop-area.dragover {
+            background-color: #e6f7ff;
+            border-color: #00bfff;
+        }
+        .file-drop-area.dropped {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        #file-chosen {
+            margin-top: 10px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -14,11 +38,13 @@
 
         <form method="POST" enctype="multipart/form-data">
             <div class="file-upload-wrapper">
-                <label for="file" class="custom-file-upload">
-                    Choose File
-                </label>
-                <span id="file-chosen">No file selected</span>
-                <input type="file" id="file" name="file" required>
+                <!--<span id="file-chosen">No file selected</span>-->
+                <input type="file" id="file" name="file" required style="display:none;">
+            </div>
+
+            <!-- New drag and drop area -->
+            <div class="file-drop-area" id="file-drop-area">
+                Drag & Drop Files Here or Click to Upload
             </div>
 
             <label for="custom_alias">Custom Alias (optional):</label><br>
@@ -32,12 +58,43 @@
     </div>
 
     <script>
-        // JavaScript to display the selected file name
+        // JavaScript for displaying file names
         const fileInput = document.getElementById('file');
-        const fileChosen = document.getElementById('file-chosen');
-
+        const dropArea = document.getElementById('file-drop-area');
+    
+        // Update the file chosen text when a file is selected via the file dialog
         fileInput.addEventListener('change', function () {
-            fileChosen.textContent = this.files[0].name;
+            dropArea.textContent = this.files[0].name; // Show the file name in the drop area
+        });
+    
+        // Handle drag over event
+        dropArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropArea.classList.add('dragover');
+        });
+    
+        // Remove dragover class when dragging leaves the area
+        dropArea.addEventListener('dragleave', () => {
+            dropArea.classList.remove('dragover');
+        });
+    
+        // Handle file drop
+        dropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropArea.classList.remove('dragover');
+            dropArea.classList.add('dropped'); // Add dropped class for success visual feedback
+    
+            // Assign the dropped files to the input element
+            const files = e.dataTransfer.files;
+            fileInput.files = files;
+    
+            // Update the drop area to show the file name instead of "File Dropped!"
+            dropArea.textContent = files[0].name;
+        });
+    
+        // Allow clicking on the drag and drop area to open the file dialog
+        dropArea.addEventListener('click', () => {
+            fileInput.click();
         });
     </script>
 </body>
