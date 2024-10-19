@@ -131,7 +131,9 @@ def login():
     user_ip = get_user_ip()
     return render_template('login.html', user_ip=user_ip)
 
-
+@app.route('/getip')
+def showIP():
+    return get_user_ip()
 
 @app.route('/<short_url>')
 def redirect_url(short_url):
