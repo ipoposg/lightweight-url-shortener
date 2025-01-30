@@ -11,3 +11,5 @@ https://s.keechun.me
 Default login password: qwerty (for self-hosted instances)
 
 Please run convert.py to convert your password into SHA256 format to be inserted into app.py.
+
+To start the web application, run app.py after installing all dependencies in requirements.txt. The app listens on port 8084 for traffic from all destinations.
